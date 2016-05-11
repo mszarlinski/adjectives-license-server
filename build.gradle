@@ -13,11 +13,11 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'adjectives-license-server'
-	version = '0.0.1-SNAPSHOT'
+	version = '1.0'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -35,8 +35,13 @@ dependencies {
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+	testCompile('org.codehaus.groovy:groovy:2.4.6')
 }
 
+// Heroku
+task stage {
+	dependsOn build
+}
 
 eclipse {
 	classpath {
